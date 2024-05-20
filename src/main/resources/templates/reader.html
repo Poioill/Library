@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/readerMore.css}">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div th:include="base/header"></div>
+        <main class="main">
+            <div class="container_">
+                <div class="main__reader">
+                    <div class="reader__box">
+                        <div class="reader__img">
+                            <img th:src="'/readerImages/' + ${reader.images[0].id}" alt="">
+                        </div>
+                        <div class="reader__info">
+                            <p th:text="${reader.id}"></p>
+                            <p th:text="${reader.name}"></p>
+                            <p th:text="${reader.phone}"></p>
+                            <p th:text="${reader.email}"></p>
+                        </div>   
+                    </div>
+                    <div class="reader__books">
+                        <p>Книги</p>
+                        <div class="books__box">
+                            <div class="book__item" th:each="book : ${reader.books}">
+                                <a th:href="'/book/' + ${book.name}">
+                                    <div class="item__img">
+                                        <img th:src="'/bookImages/' + ${book.id}" alt="">
+                                    </div>
+                                    <p th:text="${book.name}"></p>
+                                    <p th:text="${book.author.name}">Л.Н. Толстой</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <div th:include="base/footer"></div>
+    </div>
+    <script src="/styles/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+.main{
+    margin-top: 120px;
+}
+.book__info__box{
+    display: flex;
+    justify-content: center;
+    gap: 55px;
+}
+.book__cover{
+    max-width: 260px;
+    max-height: 360px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: -30px 30px 30px 5px #BDB4B4
+}
+.book__info{
+    margin-top: 50px;
+}
+.book__title{
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+.book__info p, .book__info a{
+    font-size: 16px;
+    color: #909090;
+    font-weight: 300;
+    margin-bottom: 5px;
+}
+.book__info a:hover{
+    color: #534b4b;
+    transition-duration: 0.4s;
+}
+
+.book__description{
+    margin-top: 70px;
+    background-color: #FAF7F3;
+    padding: 40px 50px;
+    border-radius: 3px;
+    margin-bottom: 70px;
+}
+.description__title{
+    font-weight: 600;
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+.description__text{
+    color: #694D3E;
+    line-height: 1.2;
+}

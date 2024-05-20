@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/catalog.css?version=51}">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div th:include="base/header"></div>
+        <main class="main">
+            <div class="container_">
+                <div class="category__title">
+                    <p>Все писатели</p>
+                </div>
+                <div class="main__search">
+                    <p>Найти писателя</p>
+                    <form action="/author" method="get" class="search__form">
+                        <input type="submit" value="">
+                        <input type="search" name="name" id="site-search" placeholder="Найти писателя"/>
+                    </form>
+                    <div class="search__result">
+                        <div class="search__book__item" th:each="author : ${author}">
+                            <a th:href="'/author/' + ${author.name}" class="book__link">
+                                <div class="book__img">
+                                    <img th:src="'/authorImages/' + ${author.images[0].id}" alt="">
+                                </div>
+                                <p class="book__title" th:text="${author.name}"></p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <div th:include="base/footer"></div>
+    </div>
+    <script src="/styles/js/script.js"></script>
+</body>
+</html>

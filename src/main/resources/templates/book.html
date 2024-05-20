@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/book.css}">
+    <title>Document</title>
+</head>
+<body>
+<div class="wrapper">
+<div th:include="base/header"></div>
+        <main class="main">
+            <div class="container_">
+                <div class="main__book">
+                    <div class="book__info__box">
+                        <div class="book__cover">
+                            <img src="/images/img/coverBook.jpg" alt="">
+                        </div>
+                        <div class="book__info">
+                            <h4 class="book__title" th:text="${book.name}"></h4>
+                            <p>Автор:  <a th:href="'/author/' + ${book.author.name}" th:text="${book.author.name}"></a></p>
+                            <p>Год издания: <span th:text="${book.publishedYear}"></span></p>
+                        </div>
+                    </div>
+                    <div class="book__description">
+                        <p class="description__title">Описание</p>
+                        <p class="description__text" th:text="${book.description}"></p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    <div th:include="base/footer"></div>
+</div>
+<script src="/styles/js/script.js"></script>
+</body>
+</html>

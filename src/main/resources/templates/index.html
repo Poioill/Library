@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+    <title>Document</title>
+</head>
+<body>
+<div class="wrapper">
+    <div th:include="base/header"></div>
+        <main class="main">
+            <div class="container_">
+                <div class="main__grid__box">
+                    <div class="grid__box_leftside">
+                        <div class="form__item">
+                            <div class="form__item__book">
+                                <a href="#book_g" class="book__giving">Выдача книги</a>
+                            </div>
+                        </div>
+                        <div class="form__item">
+                            <div class="form__item__book">
+                                <a href="#book_t" class="book__taking">Прием книги</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid__box_rightside">
+                        <div class="form__item">
+                            <div class="form__item__add">
+                                <a href="#add_book" class="add_plus">
+                                    <img src="/images/svg/plus.svg" alt="">
+                                </a>
+                                <a href="#add_book" class="add__">
+                                    Добавить новую книгу
+                                </a>
+                            </div>
+                        </div>
+                        <div class="form__item">
+                            <div class="form__item__add">
+                                <a href="#add_auth" class="add_plus">
+                                    <img src="/images/svg/plus.svg" alt="">
+                                </a>
+                                <a href="#add_auth" class="add__">
+                                    Добавить нового автора
+                                </a>
+                            </div>
+                        </div>
+                        <div class="form__item">
+                            <div class="form__item__add">
+                                <a href="#add_reader" class="add_plus">
+                                    <img src="/images/svg/plus.svg" alt="">
+                                </a>
+                                <a href="#add_reader" class="add__">
+                                    Добавить читателя
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<!--                FORMS            -->
+                <div class="divide__block" id="book_g"></div>
+                <div class="form__add">
+                    <p class="form__title">
+                        Вернуть книгу
+                    </p>
+                    <form action="/takeBook" method="POST" enctype="multipart/form-data">
+                        <div class="form__field__box">
+                            <p>Выберите читателя</p>
+                            <select name="readerSelectG" size="1">
+                                <option disabled selected value="">--</option>
+                                <div th:each="reader : ${reader}">
+                                    <option th:value="${reader.id}" th:text="${reader.name}"></option>
+                                </div>
+                            </select>
+                        </div>
+                        <div class="form__field__box">
+                            <p>Выберите книгу</p>
+                            <select name="bookSelectG" size="1">
+                                <option disabled selected value="">--</option>
+                                <div th:each="book : ${book}">
+                                    <option th:value="${book.id}" th:text="${book.name}"></option>
+                                </div>
+                            </select>
+                        </div>
+                        <div class="form__field__btn">
+                            <button type="submit">Вернуть</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="divide__block"></div>
+                    <p class="form__title">
+                        Выдать книгу
+                    </p>
+                    <form action="/takeBook" method="POST" enctype="multipart/form-data">
+                        <div class="form__field__box">
+                            <p>Выберите книгу</p>
+                            <select name="bookSelect" size="1">
+                                <option disabled selected value="">--</option>
+                                <div th:each="book : ${book}">
+                                    <option th:value="${book.id}" th:text="${book.name}"></option>
+                                </div>
+                            </select>
+                        </div>
+                        <div class="form__field__box">
+                            <p>Выберите читателя</p>
+                            <select name="readerSelect" size="1">
+                                <option disabled selected value="">--</option>
+                                <div th:each="reader : ${reader}">
+                                    <option th:value="${reader.id}" th:text="${reader.name}"></option>
+                                </div>
+                            </select>
+                        </div>
+                        <div class="form__field__btn">
+                            <button type="submit">Выдать</button>
+                        </div>
+                    </form>
+
+                <div class="divide__block" id="add_auth"></div>
+                <div class="form__add">
+                    <p class="form__title">
+                        Добавить автора
+                    </p>
+                    <form action="/addAuthor" method="POST" enctype="multipart/form-data">
+                        <div class="form__field__box">
+                            <p>Выберите фотографию: </p>
+                            <input type="file" id="file"  name="fileAuthor">
+                        </div>
+                        <div class="form__field__box">
+                            <p>Введите ФИО автора</p>
+                            <input type="text" name="name" id="nameAuthor">
+                        </div>
+                        <div class="form__field__box">
+                            <p>Введите описание</p>
+                            <textarea name="description" id="descriptionAuthor"></textarea>
+                        </div>
+                        <div class="form__field__box__flex">
+                            <div class="item__form-field">
+                                <p>Годы жизни</p>
+                                <input type="text" name=" yearsOfLive" id=" yearsOfLive">
+                            </div>
+                            <div class="item__form-field">
+                                <p>Страна</p>
+                                <input type="text" name="country" id="country">
+                            </div>
+                        </div>
+                        <div class="form__field__btn">
+                            <button type="submit">Добавить</button>
+                        </div>
+                    </form>
+                </div>     
+                <div class="divide__block" id="add_book"></div>
+                <div class="form__add">
+                    <p class="form__title">
+                        Добавить книгу
+                    </p>
+                    <form th:object="${author}" action="/addBook" method="POST" enctype="multipart/form-data">
+                        <div class="form__field__box">
+                            <p>Вставьте обложку</p>
+                            <input type="file" id="fileBook" name="fileBook">
+                        </div>
+                        <div class="form__field__box">
+                            <p>Введите название книги</p>
+                            <input type="text" name="name" id="nameBook">
+                        </div>
+                        <div class="form__field__box">
+                            <p>Введите описание</p>
+                            <textarea name="description" id="descriptionBook"></textarea>
+                        </div>
+                        <div class="form__field__box__flex">
+                             <div class="item__form-field">
+                                <p>Выберите автора</p>
+                                 <select name="select" size="1">
+                                     <option disabled selected value="">--</option>
+                                     <div th:each="author : ${author}">
+                                         <option th:value="${author.id}" th:text="${author.name}"></option>
+                                     </div>
+                                 </select>
+                             </div>
+                            <div class="item__form-field">
+                                <p>Год издания</p>
+                                <input type="text" name="publishedYear" id="publishedYear">
+                            </div>
+                        </div>
+                        <div class="form__field__btn">
+                            <button type="submit">Добавить</button>
+                        </div>
+                    </form>
+                </div>    
+                <div class="divide__block" id="add_reader"></div>
+                <div class="form__add">
+                    <p class="form__title">
+                        Добавить читателя
+                    </p>
+                    <form action="/addReader" method="POST" enctype="multipart/form-data">
+                        <div class="form__field__box">
+                            <p>Выберите фотографию:</p>
+                            <input type="file" id="fileReader" name="fileReader">
+                        </div>
+                        <div class="form__field__box">
+                            <p>Введите ФИО</p>
+                            <input type="text" name="name" id="nameReader">
+                        </div>
+                        <div class="form__field__box__flex">
+                            <div class="item__form-field">
+                                <p>Номер телефона</p>
+                                <input type="text" name="phone" id="phone">
+                            </div>
+                            <div class="item__form-field">
+                                <p>Email</p>
+                                <input type="text" name="email" id="email">
+                            </div>
+                        </div>
+                        <div class="form__field__btn">
+                            <button type="submit">Добавить</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="divide__block"></div>
+            </div>
+        </main>
+    <div th:include="base/footer"></div>
+</div>
+<!--<script th:src="@{/js/script.js}"></script>-->
+</body>
+</html>

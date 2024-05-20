@@ -1,0 +1,111 @@
+.main{
+    margin-top: 100px;
+}
+.main__search{
+    margin-bottom: 75px;
+}
+.search__form {
+    margin: 20px 0 35px 0;
+    display: flex;
+    gap: 10px;
+}
+.search__form input[type = submit]{
+    background-color: #FCE4D6;
+    font-size: 0;
+    border-radius: 20px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 27px;
+    cursor: pointer;
+    box-shadow: 0 0 5px 1px #FEF5F1;
+    background: url(/images/svg/search.svg) no-repeat 12px 10px;
+}
+.search__form input[type = submit]:hover{
+    transition-duration: 0.4s;
+    background-color: #ebb393;
+    box-shadow: 0 0 5px 1px #FCE4D6;
+}
+.search__form input[type = search]{
+    border-radius: 20px;
+    border: 1px solid #B56537;
+    padding: 14px 15px;
+    color: #924D26;
+    width: 100%;
+}
+.search__result{
+    display: flex;
+    gap: 35px;
+    flex-wrap: wrap;
+}
+.search__result .search__book__item{
+    max-width: 180px;
+    text-align: center;
+}
+
+.book__link .book__img:hover{
+    transition-duration: 0.4s;
+    box-shadow: 2px 2px 10px 2px #b6b6b6;
+}
+.book__link .book__title:hover{
+    font-weight: 500;
+    transition-duration: 0.4s;
+}
+.book__img{
+    display: flex;
+    margin-bottom: 10px;
+    height: 225px;
+    width: 170px;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 7px;
+}
+.book__author{
+    font-size: 18px;
+    color: #909090;
+    margin-top: 2px;
+}
+/* categories */
+.main__categories{
+    margin-top: 30px;
+    margin-bottom: 75px;
+}
+.category__title{
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+.category__box{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    font-size: 16px;
+}
+.category__img{
+    max-width: 170px;
+    max-height: 180px;
+    overflow: hidden;
+    border-radius: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 7px;
+}
+.category__item p{
+    margin: 0 auto;
+    text-align: center;
+}
+.category__item .category__img:hover{
+    transition-duration: 0.4s;
+    box-shadow: 2px 2px 10px 2px #b6b6b6;
+}
+.category__item:hover{
+    transition-duration: 0.4s;
+    font-weight: 500;
+}
+.category__title p{
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}

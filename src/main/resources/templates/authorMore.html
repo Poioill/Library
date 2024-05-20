@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/author.css?version=51}">
+    <title>Document</title>
+</head>
+<body>
+<div class="wrapper">
+<div th:include="base/header"></div>
+        <main class="main">
+            <div class="main__author">
+                    <div class="author__info">
+                        <div class="container_">
+                            <div class="author__info__box">
+                                <div class="author__pic">
+                                    <img th:src="'/authorImages/' + ${author.images[0].id}" alt="">
+                                </div>
+                                <div class="author__text">
+                                    <h4 th:text="${author.name}"></h4>
+                                    <p>Годы жизни: <span th:text="${author.yearsOfLive}"></span></p>
+                                    <p>Страна: <span th:text="${author.country}"></span></p>
+                                    <p th:text="${author.description}"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="author__books__box">
+                        <div class="container_">
+                            <p class="author__books__title">Книги</p>
+                            <div class="author__books__list">
+                                <div class="book__item" th:each="book : ${author.books}">
+                                    <a th:href="'/book/' + ${book.name}">
+                                        <div class="item__img">
+                                            <img th:src="'/bookImages/' + ${book.id}" alt="cover">
+                                        </div>
+                                        <p th:text="${book.name}"></p>
+                                    </a>    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </main>
+        <div th:include="base/footer"></div>
+</div>
+<script src="/styles/js/script.js"></script>
+</body>
+</html>

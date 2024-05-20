@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/reader.css?version=51}">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div th:include="base/header"></div>
+        <main class="main">
+            <div class="container_">
+                <div class="reader__title">
+                    <p>Все читатели</p>
+                </div>
+                <div class="main__search">
+                    <p>Поиск</p>
+                    <form action="/readers" method="get" class="search__form">
+                        <input type="submit" value="">
+                        <input type="search" name="name" id="site-search" placeholder="Найти читателя"/>
+                    </form>
+                    <div class="search__result">
+                        <div class="reader__item" th:each="reader : ${reader}">
+                            <a th:href="'/reader/' + ${reader.id}">
+                                <div class="item__img">
+                                    <img th:src="'/readerImages/' + ${reader.images[0].id}" alt="ava">
+                                </div>
+                                <div class="item__info">
+                                    <p class="reader__name" th:text="${reader.name}"></p>
+                                    <p class="reader__id">ID:<span th:text="${reader.id}"></span></p>
+                                </div>   
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <div th:include="base/footer"></div>
+    </div>
+    <script src="/styles/js/script.js"></script>
+</body>
+</html>

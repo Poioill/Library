@@ -1,0 +1,70 @@
+.main{
+    margin-top: 100px;
+}
+.main__search{
+    margin-bottom: 75px;
+}
+.search__form{
+    margin: 20px 0 35px 0;
+    display: flex;
+    gap: 10px;
+}
+.search__form button{
+    background-color: #FCE4D6;
+    border-radius: 20px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 13px;
+    cursor: pointer;
+    box-shadow: 0 0 5px 1px #FEF5F1;
+}
+.search__form button:hover{
+    transition-duration: 0.4s;
+    background-color: #ebb393;
+    box-shadow: 0 0 5px 1px #FCE4D6;
+}
+.search__form input[type = search]{
+    border-radius: 20px;
+    border: 1px solid #B56537;
+    padding: 14px 15px;
+    color: #924D26;
+    width: 100%;
+}
+.reader__title{
+    font-weight: 700;
+    font-size: 28px;
+    margin-bottom: 30px;
+}
+/* reader */
+.search__result{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 70px;
+    justify-content: space-between;
+}
+.reader__item a{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.reader__item .item__img{
+    width: 70px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.item__info .reader__name{
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 3px;
+}
+.reader__id{
+    font-size: 16px;
+}
+.reader__item .reader__name:hover{
+    text-decoration: underline;
+}
